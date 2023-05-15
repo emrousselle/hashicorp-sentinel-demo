@@ -31,6 +31,11 @@ violatingAWSResources =
         plan.filter_attribute_not_contains_list(allAWSResourcesWithStandardTags,
                         "tags", mandatory_tags, true)
 
+if length(violatingAWSResources["messages"]) > 0 {
+  print("Resources must have the following mandatory tags present: Name, Environment, Owner.")
+  plan.print_violations(violatingRDSInstances["messages"], "")
+}
+
 # Main rule
 main = rule {
   length(violatingAWSResources["messages"]) is 0
