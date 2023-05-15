@@ -33,7 +33,7 @@ violatingAWSResources =
 
 if length(violatingAWSResources["messages"]) > 0 {
   print("Resources must have the following mandatory tags present: Name, Environment, Owner.")
-  plan.print_violations(violatingRDSInstances["messages"], "")
+  plan.print_violations(violatingAWSResources["messages"], "")
 }
 
 # Main rule
